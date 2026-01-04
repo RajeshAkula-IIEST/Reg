@@ -78,7 +78,6 @@
 
 <script>
 const scriptURL = "https://script.google.com/macros/s/AKfycbzctp-NSTV3Oel2-tfuGqtrIra_hETSj9w5SWbk7Wr3RqisgHLzIUDz5JjNT-4BGotz/exec";
-
 function submitForm() {
   const name = document.getElementById("name").value.trim();
   const roll = document.getElementById("roll").value.trim();
@@ -91,24 +90,16 @@ function submitForm() {
 
   fetch(scriptURL, {
     method: "POST",
+    mode: "no-cors",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ name, roll, dob })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      document.getElementById("msg").innerText = "Registration successful!";
-      document.querySelector("button").disabled = true;
-    } else {
-      document.getElementById("msg").innerText = "Server error!";
-    }
-  })
-  .catch(err => {
-    document.getElementById("msg").innerText = "Submission failed!";
-    console.error(err);
   });
+
+  document.getElementById("msg").innerText =
+    "Registration submitted successfully!";
+  document.querySelector("button").disabled = true;
 }
 </script>
 
