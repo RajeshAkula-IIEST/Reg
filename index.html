@@ -77,7 +77,7 @@
 </div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyyrQTGLHo_gKxg7jdIsI8o7FuWjWtyfiTwszdVw7JZdyMstuvXsvCkFmWud7e5rUOW/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyj8C_0FhmtBSPUERR236IAwhm13Bv7s9XFCQKTBA_9Pj4LMmzva9vCM_iM8raPj2_b/exec";
 function submitForm() {
   const name = document.getElementById("name").value.trim();
   const roll = document.getElementById("roll").value.trim().toUpperCase();
@@ -85,10 +85,9 @@ function submitForm() {
   const msg  = document.getElementById("msg");
   const btn  = document.querySelector("button");
 
-  msg.innerText = "";
   msg.style.color = "red";
+  msg.innerText = "";
 
-  // Frontend validation
   if (!name || !roll || !dob) {
     msg.innerText = "All fields are mandatory!";
     return;
@@ -105,7 +104,6 @@ function submitForm() {
     body: formData
   });
 
-  // Lock UI immediately
   btn.disabled = true;
   msg.style.color = "green";
   msg.innerText = "Registration submitted successfully!";
